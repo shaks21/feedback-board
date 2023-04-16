@@ -1,6 +1,6 @@
 import "@master/css";
 import FeedbackStatus from "./FeedbackStatus";
-import Roadmap from "../Roadmap";
+import Roadmap from "../roadmap/Roadmap";
 
 const CATEGORIES = [
   { name: "All", value: "all" },
@@ -11,7 +11,7 @@ const CATEGORIES = [
   { name: "Feature", value: "feature" }
 ];
 
-export default function Sidebar({ category, changeCategory }) {
+export default function Sidebar({ category, changeCategory }:any) {
   const onClickHandler = (cat: string): void => {
     changeCategory(cat);
   };

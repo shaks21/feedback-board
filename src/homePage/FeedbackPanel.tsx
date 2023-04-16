@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
-import { ReactComponent as UpArrow } from "/public/assets/shared/icon-arrow-up.svg";
+//import { ReactComponent as UpArrow } from "/public/assets/shared/icon-arrow-up.svg";
 import { FeedbackContext } from "../context/FeedbackContextProvider";
 import { ProductRequests } from "../models/productRequests.model";
 import { FeedbackAtom, DetailAtom } from "../Atoms";
 import { useAtom } from "jotai";
 import { useNavigate } from "react-router-dom";
 
-function FeedbackPanel({ selectSort, category, suggestionCount }): JSX.Element {
+function FeedbackPanel({ selectSort, category, suggestionCount }:any): JSX.Element {
   //const { feedbacks } = useContext(FeedbackContext);
   const [feedbacks] = useAtom(FeedbackAtom);
   const [detailAtom, setDetailAtom] = useAtom(DetailAtom);
@@ -52,7 +52,7 @@ function FeedbackPanel({ selectSort, category, suggestionCount }): JSX.Element {
     );
   }
 
-  const UpVoteBtnClicked = (props) => {
+  const UpVoteBtnClicked = (props:any) => {
     const { item } = props;
     //console.log(item);
     const [isClicked, setIsClicked] = useState(false);
@@ -67,7 +67,7 @@ function FeedbackPanel({ selectSort, category, suggestionCount }): JSX.Element {
           onClick={handleClick}
           className={isClicked ? "active" : undefined}
         >
-          {isClicked ? <UpArrow stroke="white" /> : <UpArrow stroke="blue" />}
+          {/* {isClicked ? <UpArrow stroke="white" /> : <UpArrow stroke="blue" />} */}
           {isClicked ? item + 1 : item}
         </button>
         <br />
@@ -136,16 +136,16 @@ function FeedbackPanel({ selectSort, category, suggestionCount }): JSX.Element {
       myData = [].concat(feedbacks.productRequests);
       switch (selectSort) {
         case "Most Upvotes":
-          myData.sort((a, b) => (a.upvotes < b.upvotes ? 1 : -1));
+          myData.sort((a:any, b:any) => (a.upvotes < b.upvotes ? 1 : -1));
           break;
         case "Least Upvotes":
-          myData.sort((a, b) => (a.upvotes > b.upvotes ? 1 : -1));
+          myData.sort((a:any, b:any) => (a.upvotes > b.upvotes ? 1 : -1));
           break;
         case "Most Comments":
-          myData.sort((a, b) => (countComments(a) < countComments(b) ? 1 : -1));
+          myData.sort((a:any, b:any) => (countComments(a) < countComments(b) ? 1 : -1));
           break;
         case "Least Comments":
-          myData.sort((a, b) => (countComments(a) > countComments(b) ? 1 : -1));
+          myData.sort((a:any, b:any) => (countComments(a) > countComments(b) ? 1 : -1));
           break;
         default:
           return null;
@@ -159,7 +159,7 @@ function FeedbackPanel({ selectSort, category, suggestionCount }): JSX.Element {
       }
 
       // Starts function body instead of single expression-v
-      let feedbackCard = myData.map((feedback) => {
+      let feedbackCard = myData.map((feedback:any) => {
         if (feedback === undefined) {
           //console.log("nothing here");
           return null;

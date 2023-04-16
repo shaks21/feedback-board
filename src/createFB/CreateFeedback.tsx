@@ -42,7 +42,7 @@ export default function CreateFeedback() {
         <Menu2
           defaultValue=""
           options={["feature", "UI", "UX", "enhancement", "bug"]}
-          selectOption={selectCategory}
+          selectOption={selectCategory?selectCategory:""}
           changeSelectOption={changeSelectCategory}
         />
       </div>
@@ -55,8 +55,8 @@ export default function CreateFeedback() {
         <textarea
           id="detail"
           name="detail"
-          rows="4"
-          cols="50"
+          rows={4}
+          cols={50}
           defaultValue=""
         />
       </div>

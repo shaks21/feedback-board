@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
-import { ReactComponent as UpArrow } from "/public/assets/shared/icon-arrow-up.svg";
-import { FeedbackContext } from "../context/FeedbackContextProvider";
+import  UpArrow  from "/public/assets/shared/icon-arrow-up.svg";
+//import { ReactComponent as UpArrow } from "/public/assets/shared/icon-arrow-up.svg";import { FeedbackContext } from "../context/FeedbackContextProvider";
 import { ProductRequests } from "../models/productRequests.model";
 import { FeedbackAtom, DetailAtom, PrevPageAtom } from "../Atoms";
 import { useAtom } from "jotai";
 import { useNavigate, createSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-function FeedbackList({ selectSort, category, status }): JSX.Element {
+function FeedbackList({ selectSort, category, status }:any): JSX.Element {
   //const { feedbacks } = useContext(FeedbackContext);
   const [feedbacks] = useAtom(FeedbackAtom);
   const [detailAtom, setDetailAtom] = useAtom(DetailAtom);
@@ -32,7 +32,7 @@ function FeedbackList({ selectSort, category, status }): JSX.Element {
 
   function getFeedbackCount(productRequests: any, status: string, cat: string) {
     let suggCount: number = 0;
-    feedbacks.productRequests?.forEach((feedback) => {
+    feedbacks.productRequests?.forEach((feedback:any) => {
       if (feedback.status === status) {
         if (category === "all") {
           suggCount++;
@@ -69,7 +69,7 @@ function FeedbackList({ selectSort, category, status }): JSX.Element {
     );
   }
 
-  const UpVoteBtnClicked = (props) => {
+  const UpVoteBtnClicked = (props:any) => {
     const { item } = props;
     //console.log(item);
     const [isClicked, setIsClicked] = useState(false);
@@ -159,16 +159,16 @@ function FeedbackList({ selectSort, category, status }): JSX.Element {
       myData = [].concat(feedbacks.productRequests);
       switch (selectSort) {
         case "Most Upvotes":
-          myData.sort((a, b) => (a.upvotes < b.upvotes ? 1 : -1));
+          myData.sort((a:any, b:any) => (a.upvotes < b.upvotes ? 1 : -1));
           break;
         case "Least Upvotes":
-          myData.sort((a, b) => (a.upvotes > b.upvotes ? 1 : -1));
+          myData.sort((a:any, b:any) => (a.upvotes > b.upvotes ? 1 : -1));
           break;
         case "Most Comments":
-          myData.sort((a, b) => (countComments(a) < countComments(b) ? 1 : -1));
+          myData.sort((a:any, b:any) => (countComments(a) < countComments(b) ? 1 : -1));
           break;
         case "Least Comments":
-          myData.sort((a, b) => (countComments(a) > countComments(b) ? 1 : -1));
+          myData.sort((a:any, b:any) => (countComments(a) > countComments(b) ? 1 : -1));
           break;
         default:
           return null;
@@ -182,7 +182,7 @@ function FeedbackList({ selectSort, category, status }): JSX.Element {
       }
 
       // Starts function body instead of single expression-v
-      let feedbackCard = myData.map((feedback) => {
+      let feedbackCard = myData.map((feedback:any) => {
         if (feedback === undefined) {
           //console.log("nothing here");
           return null;

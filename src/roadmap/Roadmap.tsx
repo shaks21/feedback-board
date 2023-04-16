@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import FeedbackList from "./FeedbackList";
 import { FeedbackContext } from "../context/FeedbackContextProvider";
-import { FeedbackAtom, filterAtom } from "../Atoms";
+import { FeedbackAtom } from "../Atoms";
 import { useAtom } from "jotai";
 
 export default function Roadmap() {

@@ -12,9 +12,9 @@ export default function FilterToolbar({
   category,
   suggestionCount,
   suggCountSelection
-}): JSX.Element {
-  const { feedbacks } = useContext(FeedbackContext);
-  //const [feedbacks] = useAtom(FeedbackAtom);
+}:any): JSX.Element {
+  //const { feedbacks } = useContext(FeedbackContext);
+  const [feedbacks] = useAtom(FeedbackAtom);
   let suggCount: number = 0;
 
   const [prevPageAtom, setPrevPageAtom] = useAtom(PrevPageAtom);
@@ -27,7 +27,7 @@ export default function FilterToolbar({
     navigate(path);
   };
 
-  feedbacks.productRequests?.map((feedback) => {
+  feedbacks.productRequests?.map((feedback:any) => {
     if (feedback.status === "suggestion") {
       if (category === "all") {
         suggCount++;

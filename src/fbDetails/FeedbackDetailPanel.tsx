@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { ReactComponent as UpArrow } from "/public/assets/shared/icon-arrow-up.svg";
+//import { ReactComponent as UpArrow } from "/public/assets/shared/icon-arrow-up.svg";
 import { FeedbackContext } from "../context/FeedbackContextProvider";
 import { ProductRequests } from "../models/productRequests.model";
 import { FeedbackAtom, DetailAtom } from "../Atoms";
@@ -7,7 +7,7 @@ import { useAtom } from "jotai";
 
 import DropDown2 from "./DropDown2";
 
-function FeedbackDetailPanel({ selectSort, category, status }): JSX.Element {
+function FeedbackDetailPanel({ selectSort, category, status }:any): JSX.Element {
   //const { feedbacks } = useContext(FeedbackContext);
   const [feedbacks] = useAtom(FeedbackAtom);
   const [detailAtom] = useAtom(DetailAtom);
@@ -50,7 +50,7 @@ function FeedbackDetailPanel({ selectSort, category, status }): JSX.Element {
 
   function getFeedbackCount(productRequests: any, status: string, cat: string) {
     let suggCount: number = 0;
-    feedbacks.productRequests?.forEach((feedback) => {
+    feedbacks.productRequests?.forEach((feedback:any) => {
       if (feedback.status === status) {
         if (category === "all") {
           suggCount++;
@@ -87,7 +87,7 @@ function FeedbackDetailPanel({ selectSort, category, status }): JSX.Element {
     );
   }
 
-  const UpVoteBtnClicked = (props) => {
+  const UpVoteBtnClicked = (props:any) => {
     const { item } = props;
     //console.log(item);
     const [isClicked, setIsClicked] = useState(false);
@@ -101,7 +101,7 @@ function FeedbackDetailPanel({ selectSort, category, status }): JSX.Element {
           onClick={handleClick}
           className={isClicked ? "active" : undefined}
         >
-          {isClicked ? <UpArrow stroke="white" /> : <UpArrow stroke="blue" />}
+          {/* {isClicked ? <UpArrow stroke="white" /> : <UpArrow stroke="blue" />} */}
           {isClicked ? item + 1 : item}
         </button>
         <br />
@@ -149,21 +149,21 @@ function FeedbackDetailPanel({ selectSort, category, status }): JSX.Element {
     );
   }
 
-  const getComments = (feedback) => {
+  const getComments = (feedback:any) => {
     let myData = [];
 
     if (feedback.comments !== null) {
       myData = [].concat(feedback.comments);
       //console.log(feedback.comments.length);
       // Starts function body instead of single expression-v
-      let commentCard = myData.map((comment) => {
+      let commentCard = myData.map((comment:any) => {
         if (comment === undefined) {
           console.log("nothing here comment");
           return null;
         } else {
           //console.log("something here comment");
           //console.log(comment);
-          let replyCard = comment.replies?.map((reply) => {
+          let replyCard = comment.replies?.map((reply:any) => {
             //console.log(reply);
             if (reply === undefined) {
               //console.log("nothing here");
@@ -223,7 +223,7 @@ function FeedbackDetailPanel({ selectSort, category, status }): JSX.Element {
                         options={["options", "two"]}
                         showDropDown={false}
                         toggleDropDown={(): void => toggleDropDown()}
-                        changeSelectOption={null}
+                        changeSelectOption={null as any}
                         selectOption={"test"}
                       />
                     )}
@@ -252,7 +252,7 @@ function FeedbackDetailPanel({ selectSort, category, status }): JSX.Element {
       myData = [].concat(feedbacks.productRequests);
 
       // Starts function body instead of single expression-v
-      let feedbackCard = myData.map((feedback) => {
+      let feedbackCard = myData.map((feedback:any) => {
         if (feedback === undefined) {
           //console.log("nothing here");
           return null;

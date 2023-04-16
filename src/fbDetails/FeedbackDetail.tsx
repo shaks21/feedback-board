@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import FeedbackDetailPanel from "./FeedbackDetailPanel";
-import { FeedbackContext } from "./context/FeedbackContextProvider";
+//import { FeedbackContext } from "./context/FeedbackContextProvider";
 import { useAtom } from "jotai";
 import { useLocation } from "react-router-dom";
 import { useParams, useSearchParams } from "react-router-dom";
@@ -25,11 +25,11 @@ export default function FeedbackDetail() {
     navigate(path);
   };
 
-  const LimitedTextarea = ({ rows, cols, value, limit }) => {
+  const LimitedTextarea = ({ rows, cols, value, limit }:any) => {
     const [content, setContent] = React.useState(value.slice(0, limit));
 
     const setFormattedContent = React.useCallback(
-      (text) => {
+      (text:string) => {
         setContent(text.slice(0, limit));
       },
       [limit, setContent]
