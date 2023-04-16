@@ -7,4 +7,4 @@ export const FeedbackAtom = atom<any>([]);
 
 export const DetailAtom = atom(0);
 
-export const PrevPageAtom = atom("https://yvnsfb.csb.app/");
+export const PrevPageAtom = atom("/");
