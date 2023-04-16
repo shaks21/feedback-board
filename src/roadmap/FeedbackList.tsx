@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import  UpArrow  from "/public/assets/shared/icon-arrow-up.svg";
 //import { ReactComponent as UpArrow } from "/public/assets/shared/icon-arrow-up.svg";import { FeedbackContext } from "../context/FeedbackContextProvider";
 import { ProductRequests } from "../models/productRequests.model";
 import { FeedbackAtom, DetailAtom, PrevPageAtom } from "../Atoms";
@@ -83,7 +82,7 @@ function FeedbackList({ selectSort, category, status }:any): JSX.Element {
           onClick={handleClick}
           className={isClicked ? "active" : undefined}
         >
-          {isClicked ? <UpArrow stroke="white" /> : <UpArrow stroke="blue" />}
+          {/* {isClicked ? <UpArrow stroke="white" /> : <UpArrow stroke="blue" />} */}
           {isClicked ? item + 1 : item}
         </button>
         <br />
